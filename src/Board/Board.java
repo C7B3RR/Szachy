@@ -62,6 +62,9 @@ public class Board {
         }
         return false;
     }
+    public void SetEmpty(int horizontal, int vertical){
+
+    }
 
 
 }
