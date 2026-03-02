@@ -1,13 +1,14 @@
 package Pieces;
+
 import chessPiece.team;
-public class Empty extends Pieces {
-    public Empty(team Color){
-        super(Color);
+
+public class Knight extends Pieces{
+    public Knight(team color){
+        super(color);
     }
     @Override
     public boolean CanMove(){
         return false;
     }
     public void Move(){}
-
 }
