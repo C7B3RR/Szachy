@@ -32,26 +32,29 @@ public class Board {
                 set(i,j, new Empty(team.EMPTY));
             }
         }
-        set(0, 0, new Rook(team.BLACK));
-        set(1,0, new Knight(team.BLACK));
-        set(2,0, new Bishop(team.BLACK));
-        set(3,0, new Queen(team.BLACK));
-        set(4,0, new King(team.BLACK));
-        set(5,0, new Bishop(team.BLACK));
-        set(6,0, new Knight(team.BLACK));
-        set(7,0, new Rook(team.BLACK));
+        set(0, 7, new Rook(team.BLACK));
+        set(1,7, new Knight(team.BLACK));
+        set(2,7, new Bishop(team.BLACK));
+        set(3,7, new Queen(team.BLACK));
+        set(4,7, new King(team.BLACK));
+        set(5,7, new Bishop(team.BLACK));
+        set(6,7, new Knight(team.BLACK));
+        set(7,7, new Rook(team.BLACK));
         for (int i = 0;i<8;i++){
-            set(i,1,new Pawn(team.BLACK));
-            set(i,6,new Pawn(team.WHITE));
+            set(i,6,new Pawn(team.BLACK));
+            set(i,1,new Pawn(team.WHITE));
         }
-        set(0,7, new Rook(team.WHITE));
-        set(1,7, new Knight(team.WHITE));
-        set(2,7, new Bishop(team.WHITE));
-        set(3,7, new Queen(team.WHITE));
-        set(4,7, new King(team.WHITE));
-        set(5,7, new Bishop(team.WHITE));
-        set(6,7, new Knight(team.WHITE));
-        set(7,7, new Rook(team.WHITE));
+        set(0,0, new Rook(team.WHITE));
+        set(1,0, new Knight(team.WHITE));
+        set(2,0, new Bishop(team.WHITE));
+        set(3,0, new Queen(team.WHITE));
+        set(4,0, new King(team.WHITE));
+        set(5,0, new Bishop(team.WHITE));
+        set(6,0, new Knight(team.WHITE));
+        set(7,0, new Rook(team.WHITE));
+    }
+    public Pieces getPiece(Pair coords){
+        return Board[coords.x][coords.y];
     }
     public boolean IsEmpty(int horizontal, int vertical){
 //        if(this.GetPieceType(horizontal,vertical)==chessPiece.EMPTY){

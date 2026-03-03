@@ -3,20 +3,23 @@ package Pieces;
 import chessPiece.*;
 
 import chessPiece.Pair;
+
+import java.util.Vector;
+
 public class Bishop extends Pieces {
     public Bishop(team color){
         super(color);
     }
     @Override
-    public Pair[] CanMove(){
+    public Vector<Pair> CanMove(){
         chessPiece[][] logicalBoard = getLogicalBoard();
-        int possibleMoves = 0;
+        Vector<Pair> PossibleMoves = new Vector<Pair>();
         int x=this.vertical,y=this.horizontal;
         while (x>7 && y>7){
             if(logicalBoard[x][y] != chessPiece.EMPTY){
                 break;
             }
-            possibleMoves++;
+            PossibleMoves.add(new Pair(x,y));
             x+=1;
             y+=1;
         }
@@ -26,7 +29,7 @@ public class Bishop extends Pieces {
             if(logicalBoard[x][y] != chessPiece.EMPTY){
                 break;
             }
-            possibleMoves++;
+            PossibleMoves.add(new Pair(x,y));
             x-=1;
             y+=1;
         }
@@ -36,7 +39,7 @@ public class Bishop extends Pieces {
             if(logicalBoard[x][y] != chessPiece.EMPTY){
                 break;
             }
-            possibleMoves++;
+            PossibleMoves.add(new Pair(x,y));
             x-=1;
             y-=1;
         }
@@ -46,23 +49,22 @@ public class Bishop extends Pieces {
             if(logicalBoard[x][y] != chessPiece.EMPTY){
                 break;
             }
-            possibleMoves++;
+            PossibleMoves.add(new Pair(x,y));
             x+=1;
             y-=1;
         }
-        Pair[] Moves = new Pair[possibleMoves];
 
 
 
-        return Moves;
+        return PossibleMoves;
     }
     public void Move(Pair pair) {
-        Pair[] viable_pos=CanMove();
+        Vector<Pair> viable_pos=CanMove();
         if(viable_pos==null){
             return;
         }
-        for(int i=0;i<viable_pos.length;i++){
-            if(viable_pos[i]==pair){
+        for(int i=0;i<viable_pos.size();i++){
+            if(viable_pos.elementAt(i)==pair){
                 //moving company
                 this.SetEmpty(this.horizontal,this.vertical);
                 this.horizontal= pair.x;

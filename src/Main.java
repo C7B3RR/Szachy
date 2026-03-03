@@ -1,16 +1,15 @@
 
-
-
+import Board.Board;
+import chessPiece.*;
+import Pieces.*;
 
 
 void main() {
-    //TIP Press <shortcut actionId="ShowIntentionActions"/> with your caret at the highlighted text
-    // to see how IntelliJ IDEA suggests fixing it.
-    IO.println(String.format("Hello and welcome!"));
-
-    for (int i = 1; i <= 5; i++) {
-        //TIP Press <shortcut actionId="Debug"/> to start debugging your code. We have set one <icon src="AllIcons.Debugger.Db_set_breakpoint"/> breakpoint
-        // for you, but you can always add more by pressing <shortcut actionId="ToggleLineBreakpoint"/>.
-        IO.println("i = " + i);
+    Board b = new Board();
+    b.Reset();
+    Bishop s = (Bishop) b.getPiece(new Pair(2,0));
+    Vector<Pair> moves = s.CanMove();
+    for(int i=0;i<moves.size();i++){
+        IO.println(moves.elementAt(i));
     }
 }

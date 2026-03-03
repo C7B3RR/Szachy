@@ -1,14 +1,32 @@
 package Pieces;
 
-import chessPiece.team;
+import chessPiece.*;
+
+import java.util.Vector;
 
 public class Knight extends Pieces{
     public Knight(team color){
         super(color);
     }
     @Override
-    public boolean CanMove(){
-        return false;
+    public Vector<Pair> CanMove(){
+        chessPiece[][] logicalBoard = getLogicalBoard();
+        Vector<Pair> possibleMoves = new Vector<Pair>();
+        for(int i=-1;i<=1;i++) {
+            for(int j=-1;j<=1;j++){
+                if(this.horizontal+j > 7 || this.horizontal+j<0 || this.vertical+i > 7 || this.vertical+i < 0){
+                    continue;
+                }
+                if(logicalBoard[this.horizontal+j][this.vertical+i]==chessPiece.EMPTY){
+                    possibleMoves.add(new Pair(this.horizontal+j,this.vertical+i));
+                }
+            }
+
+        }
+
+
+
+        return possibleMoves;
     }
     public void Move(){}
 }

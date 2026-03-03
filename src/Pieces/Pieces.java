@@ -2,6 +2,8 @@ package Pieces;
 import Board.Board;
 import chessPiece.*;
 
+import java.util.Vector;
+
 public abstract class Pieces extends Board {
     int vertical;
     int horizontal;
@@ -11,7 +13,7 @@ public abstract class Pieces extends Board {
         this.Color=Color;
     }
 
-    public abstract Pair[] CanMove();
+    public abstract Vector<Pair> CanMove();
     public chessPiece GetType(){
         return Type;
     }
