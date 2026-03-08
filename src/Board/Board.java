@@ -15,11 +15,11 @@ public class Board {
     }
 
 
-    public chessPiece[][] getLogicalBoard(){
-        chessPiece[][] logicalBoard = new chessPiece[8][8];
+    public team[][] getLogicalBoard(){
+        team[][] logicalBoard = new team[8][8];
         for(int i=0;i<8;i++){
             for(int j=0;j<8;j++){
-                logicalBoard[i][j]=Board[i][j].GetType();
+                logicalBoard[i][j]=Board[i][j].getColor();
             }
         }
 

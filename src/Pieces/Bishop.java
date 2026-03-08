@@ -15,7 +15,7 @@ public class Bishop extends Pieces {
         chessPiece[][] logicalBoard = getLogicalBoard();
         Vector<Pair> PossibleMoves = new Vector<Pair>();
         int x=this.vertical,y=this.horizontal;
-        while (x>7 && y>7){
+        while (x>8 && y>8){
             if(logicalBoard[x][y] != chessPiece.EMPTY){
                 break;
             }
@@ -25,7 +25,7 @@ public class Bishop extends Pieces {
         }
         x=this.vertical;
         y=this.horizontal;
-        while (x<=0 && y>7){
+        while (x<=0 && y>8){
             if(logicalBoard[x][y] != chessPiece.EMPTY){
                 break;
             }
@@ -45,7 +45,7 @@ public class Bishop extends Pieces {
         }
         x=this.vertical;
         y=this.horizontal;
-        while (x>7 && y<=0){
+        while (x>8 && y<=0){
             if(logicalBoard[x][y] != chessPiece.EMPTY){
                 break;
             }
@@ -73,3 +73,4 @@ public class Bishop extends Pieces {
         }
     }
 }
+

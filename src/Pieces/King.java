@@ -14,7 +14,7 @@ public class King extends Pieces {
         Vector<Pair> possibleMoves = new Vector<Pair>();
         for(int i=-1;i<=1;i++) {
             for(int j=-1;j<=1;j++){
-                if(this.horizontal+j > 7 || this.horizontal+j<0 || this.vertical+i > 7 || this.vertical+i < 0){
+                if(this.horizontal+j > 8 || this.horizontal+j<0 || this.vertical+i > 8 || this.vertical+i < 0 || (j==0 && i ==0)){
                     continue;
                     }
                 if(logicalBoard[this.horizontal+j][this.vertical+i]==chessPiece.EMPTY){
@@ -27,3 +27,4 @@ public class King extends Pieces {
     }
     public void Move(){}
 }
+
