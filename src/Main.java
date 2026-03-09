@@ -8,8 +8,16 @@ void main() {
     Board b = new Board();
     b.Reset();
     Bishop s = (Bishop) b.getPiece(new Pair(2,0));
-    Vector<Pair> moves = s.CanMove();
-    for(int i=0;i<moves.size();i++){
-        IO.println(moves.elementAt(i));
+    for(int i=0;i<8;i++){
+        for(int j=0;j<8;j++){
+            Pieces c = b.getPiece(new Pair(i,j));
+            IO.println(c);
+            IO.println("y = " + i);
+            IO.println("x = " + j);
+        }
     }
+//    List<Pair> moves = s.CanMove();
+//    for(var move : moves){
+//        IO.println(move);
+//    }
 }

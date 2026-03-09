@@ -2,6 +2,8 @@ package Pieces;
 
 import chessPiece.*;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Vector;
 
 public class King extends Pieces {
@@ -9,20 +11,20 @@ public class King extends Pieces {
         super(color);
     }
     @Override
-    public Vector<Pair> CanMove(){
-        chessPiece [][] logicalBoard = getLogicalBoard();
-        Vector<Pair> possibleMoves = new Vector<Pair>();
-        for(int i=-1;i<=1;i++) {
-            for(int j=-1;j<=1;j++){
-                if(this.horizontal+j > 8 || this.horizontal+j<0 || this.vertical+i > 8 || this.vertical+i < 0 || (j==0 && i ==0)){
-                    continue;
-                    }
-                if(logicalBoard[this.horizontal+j][this.vertical+i]==chessPiece.EMPTY){
-                    possibleMoves.add(new Pair(this.horizontal+j,this.vertical+i));
-                }
-                }
+    public List<Pair> CanMove(){
+        team[][] logicalBoard = getLogicalBoard();
+        List<Pair> possibleMoves = new ArrayList<>();
+        int[][] moves_vector = {{1,1},{1,-1},{-1,1},{-1,-1},{1,0},{0,1},{-1,0},{0,-1} };
 
-            }
+        for(var move : moves_vector){
+            int x = this.vertical;
+            int y = this.horizontal;
+            x += move[0];
+            y += move[1];
+            if (isOutOfBounds(this, move)) continue;
+            possibleMoves.add(new Pair(x,y));
+        }
+
         return possibleMoves;
     }
     public void Move(){}

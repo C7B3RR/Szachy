@@ -1,6 +1,8 @@
 package Pieces;
 import chessPiece.*;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Vector;
 
 public class Rook extends Pieces{
@@ -8,42 +10,23 @@ public class Rook extends Pieces{
         super(color);
     }
     @Override
-    public Vector<Pair> CanMove(){
-        chessPiece[][] logicalBoard = getLogicalBoard();
-        var possibleMoves = new Vector<Pair>();
-        int i=0;
-        while(this.vertical + i < 8){
-            if(logicalBoard[this.vertical+i][this.horizontal]!=chessPiece.EMPTY){
-                break;
-            }
-            possibleMoves.add(new Pair(this.vertical+i,this.horizontal));
-            i++;
-        }
-        i=0;
-        while(this.vertical + i >=0){
-            if(logicalBoard[this.vertical+i][this.horizontal]!=chessPiece.EMPTY){
-                break;
-            }
-            possibleMoves.add(new Pair(this.vertical+i,this.horizontal));
-            i--;
-        }
-        i=0;
-        while(this.horizontal + i >=0){
-            if(logicalBoard[this.vertical][this.horizontal+i]!=chessPiece.EMPTY){
-                break;
-            }
-            possibleMoves.add(new Pair(this.vertical,this.horizontal+i));
-            i--;
-        }
-        i=0;
-        while(this.horizontal + i < 8 ){
-            if(logicalBoard[this.vertical][this.horizontal+i]!=chessPiece.EMPTY){
-                break;
-            }
-            possibleMoves.add(new Pair(this.vertical,this.horizontal+i));
-            i++;
-        }
+    public List<Pair> CanMove(){
+        team[][] logicalBoard = getLogicalBoard();
+        List<Pair> possibleMoves = new ArrayList<>();
+        int[][] moves_vector = {{1,0},{0,1},{-1,0},{0,-1} };
 
+        for(var move : moves_vector){
+            int x = this.vertical;
+            int y = this.horizontal;
+            while (true) {
+                x += move[0];
+                y += move[1];
+                if (isOutOfBounds(this, move)) break;
+                possibleMoves.add(new Pair(x,y));
+                if (this.getColor() != team.EMPTY) break;
+
+            }
+        }
 
         return possibleMoves;
     }

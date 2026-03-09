@@ -18,8 +18,8 @@ public class Knight extends Pieces{
 
         for(var move : moves_vector){
             if(isOutOfBounds(this,move)) continue;
-            if(this.getColor() == logicalBoard[move[0]][move[1]]) continue;
-            possibleMoves.add(new Pair(move[0],move[1]));
+            if(this.getColor() == logicalBoard[this.vertical + move[0]][this.horizontal + move[1]]) continue;
+            possibleMoves.add(new Pair(this.vertical + move[0],this.horizontal + move[1]));
         }
 
         return possibleMoves;
